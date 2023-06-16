@@ -8,6 +8,8 @@ class Url < ApplicationRecord
     # Generates the token for short url
     def generate_shortened_url
         token = SecureRandom.alphanumeric(6)
+
+        # If already generated, generate a new one
         while Url.exists?(shortened: token)
             token = SecureRandom.alphanumeric(6)
         end
