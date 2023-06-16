@@ -1,0 +1,9 @@
+<div class="form-container">
+  <%= form_with(model: @url, url: url_index_path, method: :post) do |form| %>
+    <%= form.label :original_url %>
+    <%= form.text_field :original, placeholder: "Enter the URL", required: true %>
+    
+    <%= form.submit "Submit" %>
+    <%= link_to "Back", root_path %>
+  <% end %>
+</div>

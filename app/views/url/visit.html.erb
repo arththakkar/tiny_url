@@ -1,0 +1,27 @@
+<%= link_to "Back", root_path %>
+<h1>Visit Info</h1>
+
+<br />
+
+Original URL: <%= @url.original %>
+
+<br />
+
+Shortened URL: https://localhost:3000/<%= @url.shortened %>
+
+<br />
+
+Visit Count: <%= @visits.length %>
+
+<br />
+
+<table>
+    <tr>
+        <th>IP Address</th>
+    </tr>
+    <% @visits.each do |visit| %>
+        <tr>
+            <td><%= visit.ip %></td>
+        </tr>
+    <% end %>
+</table>

@@ -1,0 +1,31 @@
+<h1>List of URLs</h1>
+
+<%= link_to "New URL", new_url_path, class: "new-button" %>
+
+<table>
+    <tr>
+        <th>Long URL</th>
+        <th>Short URL</th>
+        <th>Visit Info</th>
+    </tr>
+    <% @urls.each do |url| %>
+        <tr>
+            <td><%= url.original %></td>
+            <td>http://localhost:3000/<%= url.shortened %> <%= link_to 'Copy', "#", onclick: "copy_url('#{url.shortened}');" %></td>
+            <td><%= link_to 'Visit Info', visit_info_path(token: url.shortened) %></td>
+        </tr>
+    <% end %>
+</table>
+
+<script type="text/javascript">
+    function copy_url(text){
+        url = "http://localhost:3000/"+text;
+        navigator.clipboard.writeText(url)
+            .then(function() {
+                alert("URL copied to clipboard");
+            })
+            .catch(function(error) {
+                alert("Failed to copy URL to clipboard:", error);
+            });
+    }
+</script>
